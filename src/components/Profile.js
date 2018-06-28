@@ -5,6 +5,8 @@ function Profile(props) {
     return null;
   }
 
+  window.scrollTo(0, 0);
+  
   return(
     <div className="media">
       <img src={props.person.general.avatar} alt="avatar" />
