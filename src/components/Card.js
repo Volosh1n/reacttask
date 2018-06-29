@@ -5,9 +5,10 @@ class Card extends React.Component {
     return(
        this.props.clients.map((person, index) => {
         return (
-          <div className="card" key={index} onClick={() => this.props.callbackFromParent(person)}>
+          <div
+            className="card mb-1" key={index} onClick={() => this.props.callbackFromParent(person)}>
             <div className="card-body">
-              <div className="media hoverable">
+              <div className="media">
                 <img src={person.general.avatar} alt="avatar" style={{width: 88}}/>
                 <div className="media-body pl-3">
                   <b>{person.general.firstName} {person.general.lastName}</b>

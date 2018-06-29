@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       search: '',
+      clients: clientsData,
       currentClient: null
     };
     this.handleClick = this.handleClick.bind(this);
@@ -19,11 +20,18 @@ class App extends Component {
   };
 
   updateSearch(event) {
-    this.setState({ search: event.target.value.toLowerCase() });
+    this.setState({ search: event.target.value });
     console.log(this.state.search);
   }
 
   render() {
+    let filteredClients = this.state.clients.filter(
+      (client) => {
+        return (
+          client.general.firstName.toLowerCase().indexOf(this.state.search) !== -1
+        )
+      }
+    );
     return (
       <div className="container p-5">
         <div className="row">
@@ -38,7 +46,7 @@ class App extends Component {
                 autoFocus /
               >
             </div>
-            <Card clients={clientsData} callbackFromParent={this.handleClick} />
+            <Card clients={filteredClients} callbackFromParent={this.handleClick} />
           </div>
           <div className="col-8 p-0">
             <Profile person={this.state.currentClient} />
