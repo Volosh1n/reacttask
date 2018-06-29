@@ -25,10 +25,14 @@ class App extends Component {
   }
 
   render() {
+    let clientInfo = '';
     let filteredClients = this.state.clients.filter(
       (client) => {
         return (
-          client.general.firstName.toLowerCase().indexOf(this.state.search) !== -1
+          clientInfo = client.general.firstName.toLowerCase() +
+          client.general.lastName.toLowerCase() +
+          client.job.company.toLowerCase(),
+          clientInfo.indexOf(this.state.search) !== -1
         )
       }
     );
