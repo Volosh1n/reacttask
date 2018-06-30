@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from './components/Card';
 import Profile from './components/Profile';
-import clientsData from './components/clients.json';
+import clientsData from './clients.json';
 import './css/style.css';
 
 class App extends Component {
