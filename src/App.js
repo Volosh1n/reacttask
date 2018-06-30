@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from './components/Card';
 import Profile from './components/Profile';
 import clientsData from './components/clients.json';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
   constructor(props) {
@@ -31,31 +32,33 @@ class App extends Component {
         return (
           clientInfo = client.general.firstName.toLowerCase() +
           client.general.lastName.toLowerCase() +
+          client.job.title.toLowerCase() +
           client.job.company.toLowerCase(),
-          clientInfo.indexOf(this.state.search) !== -1
-        )
+          clientInfo.indexOf(this.state.search.toLowerCase()) !== -1
+        );
       }
     );
     return (
-      <div className="container p-5">
-        <div className="row">
-          <div className="col-4">
-            <div className="mb-3">
+      <div className="ui four column grid">
+        
+          <div className="six wide column">
+            <div className="ui big icon input focus" style={{margin: 20}}>
               <input
                 type="text"
-                placeholder="search"
-                className="form-control"
+                placeholder="Search..."
                 value={this.state.search}
                 onChange={this.updateSearch}
                 autoFocus /
               >
+              <i className="search icon"></i>
             </div>
-            <Card clients={filteredClients} callbackFromParent={this.handleClick} />
+            <div className="ui cards" style={{marginLeft: 14}}>
+              <Card clients={filteredClients} callbackFromParent={this.handleClick} />
+            </div>
           </div>
-          <div className="col-8 p-0">
+          <div className="ui items" style={{marginTop: 100}}>
             <Profile person={this.state.currentClient} />
-          </div>
-        </div>
+          </div>        
       </div>
     );
   }

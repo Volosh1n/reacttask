@@ -3,16 +3,19 @@ import React from 'react';
 class Card extends React.Component {
   render() {
     return(
-       this.props.clients.map((person, index) => {
+      this.props.clients.map((person, index) => {
         return (
-          <div className="card mb-1" key={index} onClick={() => this.props.callbackFromParent(person)}>
-            <div className="card-body">
-              <div className="media">
-                <img src={person.general.avatar} alt="avatar" style={{width: 88}}/>
-                <div className="media-body pl-3">
-                  <b>{person.general.firstName} {person.general.lastName}</b>
-                  <p>{person.job.company}</p>
-                </div>
+          <div className="card" key={index} onClick={() => this.props.callbackFromParent(person)}>
+            <div className="content">
+              <img className="left floated mini ui circular image" src={person.general.avatar} alt="avatar" />
+              <div className="header">
+                {person.general.firstName} {person.general.lastName}
+              </div>
+              <div className="meta">
+                {person.job.title}
+              </div>
+              <div className="description">
+                {person.job.company}
               </div>
             </div>
           </div>

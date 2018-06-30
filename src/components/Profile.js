@@ -1,34 +1,52 @@
 import React from 'react';
 
 function Profile(props) {
-  if (!props.person) {
+  if ( !props.person ) {
     return null;
   }
 
   window.scrollTo(0, 0);
   
-  return(
-    <div className="media">
-      <img src={props.person.general.avatar} alt="avatar" />
-      <div className="media-body ml-5">
-        <h3>
+  return (
+    <div className="item">
+      <div className="image" style={{width: 128}}>
+        <img src={props.person.general.avatar} alt="avatar" />
+      </div>
+      <div className="content">
+        <div className="header">
           {props.person.general.firstName} {props.person.general.lastName}
-        </h3>
-        <i>{props.person.job.title}</i>
-        <span> in </span>
-        <i>{props.person.job.company}</i>
-        <h6 style={{paddingTop: 20}}>Contacts:</h6>
-        <ul>
-          <li>{props.person.contact.email}</li>
-          <li>{props.person.contact.phone}</li>
-        </ul>
-        <h6>Address:</h6>
-        <ul>
-          <li>{props.person.address.street}</li>
-          <li>{props.person.address.city}</li>
-          <li>{props.person.address.zipCode}</li>
-          <li>{props.person.address.country}</li>
-        </ul>
+        </div>
+        <div className="meta">
+          {props.person.job.title}
+        </div>
+        <div className="description">
+          {props.person.job.company}
+        </div>
+        <div className="ui list">
+          <div className="item">
+            <i className="mail icon"></i>
+            <div className="content">
+              {props.person.contact.email}
+            </div>
+          </div>
+          <div className="item">
+            <i className="phone icon"></i>
+            <div className="content">
+              {props.person.contact.phone}
+            </div>
+          </div>
+        </div>
+        <div className="ui list">
+          <div className="item">
+            <i className="marker icon"></i>
+            <div className="content">
+              <p>{props.person.address.street}</p>
+              <p>{props.person.address.city}</p>
+              <p>{props.person.address.zipCode}</p>
+              <p>{props.person.address.country}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
