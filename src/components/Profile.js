@@ -35,8 +35,6 @@ function Profile(props) {
               {props.person.contact.phone}
             </div>
           </div>
-        </div>
-        <div className="ui list">
           <div className="item">
             <i className="marker icon"></i>
             <div className="content">
