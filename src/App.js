@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from './components/Card';
 import Profile from './components/Profile';
 import clientsData from './components/clients.json';
-import 'semantic-ui-css/semantic.min.css';
+import './css/style.css';
 
 class App extends Component {
   constructor(props) {
@@ -42,21 +42,21 @@ class App extends Component {
       <div className="ui four column grid">
         
           <div className="six wide column">
-            <div className="ui big icon input focus" style={{margin: 20}}>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={this.state.search}
-                onChange={this.updateSearch}
-                autoFocus /
-              >
-              <i className="search icon"></i>
+              <div className="ui big icon input focus">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={this.state.search}
+                  onChange={this.updateSearch}
+                  autoFocus /
+                >
+                <i className="search icon"></i>
             </div>
-            <div className="ui cards" style={{marginLeft: 14}}>
+            <div className="ui cards">
               <Card clients={filteredClients} callbackFromParent={this.handleClick} />
             </div>
           </div>
-          <div className="ui items" style={{marginTop: 100}}>
+          <div className="ui items">
             <Profile person={this.state.currentClient} />
           </div>        
       </div>
