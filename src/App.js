@@ -3,6 +3,7 @@ import Card from './components/Card';
 import Profile from './components/Profile';
 import clientsData from './clients.json';
 import './css/style.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor(props) {
@@ -39,28 +40,30 @@ class App extends Component {
     );
     return (
       <div className="ui four column grid">
-        
-          <div className="six wide column">
-              <div className="ui big icon input focus">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={this.state.search}
-                  onChange={this.updateSearch}
-                  autoFocus /
-                >
-                <i className="search icon"></i>
-            </div>
-            <div className="ui cards">
-              <Card clients={filteredClients} callbackFromParent={this.handleClick} />
-            </div>
+        <div className="six wide column">
+          <div className="ui big icon input focus">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={this.state.search}
+              onChange={this.updateSearch}
+              autoFocus /
+            >
+            <i className="search icon"></i>
           </div>
-          <div className="ui items">
-            <Profile person={this.state.currentClient} />
-          </div>        
+          <div className="ui cards">
+            <Card clients={filteredClients} callbackFromParent={this.handleClick} />
+          </div>
+        </div>
+        <div className="ui items">
+          <Profile person={this.state.currentClient} />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(
+  state => ({}),
+  dispatch => ({})
+)(App);

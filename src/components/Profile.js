@@ -4,9 +4,7 @@ function Profile(props) {
   if ( !props.person ) {
     return null;
   }
-
   window.scrollTo(0, 0);
-  
   return (
     <div className="item">
       <div className="image" style={{width: 128}}>
@@ -38,9 +36,9 @@ function Profile(props) {
           <div className="item">
             <i className="marker icon"></i>
             <div className="content">
-              <p>{props.person.address.street}</p>
-              <p>{props.person.address.city}</p>
-              <p>{props.person.address.zipCode}</p>
+              <p>{props.person.address.street},</p>
+              <p>{props.person.address.city},</p>
+              <p>{props.person.address.zipCode},</p>
               <p>{props.person.address.country}</p>
             </div>
           </div>
