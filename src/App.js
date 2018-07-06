@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import Card from './components/Card';
 import Profile from './components/Profile';
-import clientsData from './clients.json';
 import './css/style.css';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       search: '',
-      clients: clientsData,
       currentClient: null
     };
     this.handleClick = this.handleClick.bind(this);
@@ -27,7 +26,7 @@ class App extends Component {
 
   render() {
     let clientInfo = '';
-    let filteredClients = this.state.clients.filter(
+    let filteredClients = this.props.clients.filter(
       (client) => {
         return (
           clientInfo = client.general.firstName.toLowerCase() +
@@ -63,7 +62,10 @@ class App extends Component {
   }
 }
 
-export default connect(
-  state => ({}),
-  dispatch => ({})
-)(App);
+function mapStateToProps(state) {
+  return {
+    clients: state.clients
+  };
+}
+
+export default connect(mapStateToProps)(App);
