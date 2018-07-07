@@ -8,6 +8,11 @@
   margin-left: 14px !important;
 }
 
+.card:hover
+{
+  cursor: pointer;
+}
+
 .items
 {
   margin-top: 100px !important;

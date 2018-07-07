@@ -9,9 +9,7 @@ import { select } from './actions/index';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: ''
-    };
+    this.state = { search: '' };
     this.updateSearch = this.updateSearch.bind(this);
     const { dispatch } = props;
     this.boundActions = bindActionCreators(select, dispatch);
@@ -60,9 +58,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    clients: state.clients,
-  };
+  return { clients: state.clients };
 }
 
 export default connect(mapStateToProps)(App);

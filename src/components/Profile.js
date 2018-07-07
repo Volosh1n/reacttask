@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 
 class Profile extends React.Component {
   render() {
-    if ( !this.props.client ) {
+    if ( !this.props.client )
       return null;
-    }
     window.scrollTo(0, 0);
     return (
       <div className="item">
@@ -52,9 +51,7 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    client: state.client
-  };
+  return { client: state.client };
 }
 
 export default connect (mapStateToProps)(Profile);
