@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import clientsData from '../clients.json';
-
-function clientsReducers() {
-  return clientsData
-}
+import { active } from './client-active';
 
 const allReducers = combineReducers ({
-  clients: clientsReducers
+  clients: () => { return clientsData },
+  client: active
 });
 
 export default allReducers

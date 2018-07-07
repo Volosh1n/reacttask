@@ -52,7 +52,7 @@ class App extends Component {
           </div>
         </div>
         <div className="ui items">
-          <Profile person={this.state.client} />
+          <Profile />
         </div>
       </div>
     );
@@ -62,7 +62,6 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     clients: state.clients,
-    search: state.search
   };
 }
 
