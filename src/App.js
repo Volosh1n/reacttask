@@ -4,21 +4,18 @@ import Profile from './components/Profile';
 import './css/style.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { select } from './actions/index';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
-      currentClient: null
+      search: ''
     };
-    this.handleClick = this.handleClick.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
+    const { dispatch } = props;
+    this.boundActions = bindActionCreators(select, dispatch);
   }
-
-  handleClick = (client) => {
-    this.setState({ currentClient: client })
-  };
 
   updateSearch(event) {
     this.setState({ search: event.target.value });
@@ -51,11 +48,11 @@ class App extends Component {
             <i className="search icon"></i>
           </div>
           <div className="ui cards">
-            <Card clients={filteredClients} callbackFromParent={this.handleClick} />
+            <Card clients={filteredClients} callbackFromParent={this.boundActions} />
           </div>
         </div>
         <div className="ui items">
-          <Profile person={this.state.currentClient} />
+          <Profile person={this.state.client} />
         </div>
       </div>
     );
@@ -64,7 +61,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    clients: state.clients
+    clients: state.clients,
+    search: state.search
   };
 }
 
